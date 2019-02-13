@@ -1,4 +1,5 @@
 import scoreBackyard from '../questions/scoreBackyard.js';
+import scoreActivity from '../questions/scoreActivity.js';
 const quizForm = document.getElementById('quiz-form');
 
 
@@ -9,7 +10,8 @@ quizForm.addEventListener('submit', function(event) {
     const formData = new FormData(quizForm);
     
     const answer = {
-        backyard: formData.get('backyard')
+        backyard: formData.get('backyard'),
+        activity: formData.get('activity')
     };
     
     const scorecard = {
@@ -19,6 +21,7 @@ quizForm.addEventListener('submit', function(event) {
     };
     
     scoreBackyard(answer.backyard, scorecard);
+    scoreActivity(answer.activity, scorecard);
     
     const json = JSON.stringify(scorecard);
     window.localStorage.setItem('scorecard', json);
